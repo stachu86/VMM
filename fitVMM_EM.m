@@ -20,7 +20,6 @@ while (~converged)
     [R,loglike(iteration)] = Expectation(X,W,Mu,Kappa);
     % M-step
     [W,Mu,Kappa] = Maximization(X,Kappa,R,Regularize);
-    Kappa = Kappa + 1/Regularize;
     % convergence check
     deltlike = loglike(iteration) - loglike(iteration-1);
     deltlike = abs(100*(deltlike/loglike(iteration-1)));
