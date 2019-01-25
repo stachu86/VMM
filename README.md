@@ -1,3 +1,6 @@
+> Fork from <a href="https://github.com/isrish/VMM">https://github.com/isrish/VMM</a>.
+> I reorginize the code, add some new things to experiment with and (I think) fix few bugs hopfully not introducing new ones :)
+
 # Unsupervised Learning of Mixture of von Mises–Fisher distribution
 
 When fitting data by a mixture model, the first problem we face is how to choose the number of mixture (components). This repository contains matlab code for unsupervised learning for  mixture of <a href="https://www.wikiwand.com/en/Von_Mises%E2%80%93Fisher_distribution"> von Mises–Fisher distribution</a>. The number of mixture component that best fit the input data is selected based on <a href="https://www.wikiwand.com/en/Minimum_message_length">Minimum Message Length (MML) criterion </a>.
