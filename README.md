@@ -1,5 +1,5 @@
 > Fork from <a href="https://github.com/isrish/VMM">https://github.com/isrish/VMM</a>.
-> I reorginize the code, add some new things to experiment with and (I think) fix few bugs hopfully not introducing new ones :)
+> I reorginize the code, add some new things to experiment with and (I think) fix few bugs hopefully not introducing new ones :)
 
 # Unsupervised Learning of Mixture of von Mises–Fisher distribution
 
