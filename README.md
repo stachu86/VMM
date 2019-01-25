@@ -32,5 +32,16 @@ The code is based on ideas described in the following two papers:
   year={2015},
   publisher={Springer}
 }
+
+@article{sra2012short,
+  title={A short note on parameter approximation for von Mises-Fisher distributions: and a fast implementation of I s (x)},
+  author={Sra, Suvrit},
+  journal={Computational Statistics},
+  volume={27},
+  number={1},
+  pages={177--190},
+  year={2012},
+  publisher={Springer}
+}
 ```
 
