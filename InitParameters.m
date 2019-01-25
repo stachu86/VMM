@@ -14,6 +14,7 @@ function [mu,kappa,w] = InitParameters(X,K,varargin)
 %   'debg' = Verbosity level.  0 [default]
 
 %#   $Author: Israel D. Gebru $    $Date: 2016/04/28 $    $Revision: 1.0 $
+%#   $Modified: skacprza@agh.edu.pl $Date: 2019/01/24 $
 %#   Copyright:
 
 %% Initialize parameters using Spherical Kmeans 
