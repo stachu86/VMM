@@ -1,10 +1,10 @@
 function obj =  fitVMM_EM(X,Kmax,varargin)
-[start,tol,maxIter,Regularize,debg] = process_options(varargin,'start',[],'tol',1e-12,'maxIter',300,'Regularize',1e-3,'debg',2);
+[start,tol,maxIter,Regularize,debg,reps, kappaType] = process_options(varargin,'start',[],'tol',1e-12,'maxIter',300,'Regularize',1e-3,'debg',0,'reps',1, 'kappaType',1);
 [N,D]= size(X);
 %% Initialization using Spherical KMeans
 % Inititalize mean, kappa and component mixing weight
 if isempty(start)
-    [Mu,Kappa,W] = InitParameters(X,Kmax,'kappaMin',Regularize,'debg',0);
+    [Mu,Kappa,W] = InitParameters(X,Kmax,'kappaMin',Regularize,'debg',0,'reps', reps,'kappaType',kappaType);
 else
     W = start.W;
     Mu = start.MU;
@@ -15,11 +15,13 @@ end
 iteration = 2;
 loglike = -inf(maxIter,1);
 converged = 0;
-while (~converged)
+besselFunction = @logbesseliApprox1; %if change if numerical problems occur.
+
+ while (~converged)
     % E-step
-    [R,loglike(iteration)] = Expectation(X,W,Mu,Kappa);
+    [R,loglike(iteration)] = Expectation(X,W,Mu,Kappa, besselFunction);
     % M-step
-    [W,Mu,Kappa] = Maximization(X,Kappa,R,Regularize);
+    [W,Mu,Kappa] = Maximization(X,Kappa,R,Regularize,kappaType);
     % convergence check
     deltlike = loglike(iteration) - loglike(iteration-1);
     deltlike = abs(100*(deltlike/loglike(iteration-1)));

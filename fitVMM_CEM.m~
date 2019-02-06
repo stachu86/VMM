@@ -26,7 +26,7 @@ besselFunction = @logbesseliApprox1; %if change if numerical problems occur.
 %% Initialization using Spherical KMeans
 % Inititalize mean, kappa and component mixing weight
 if isempty(start)
-    [Mu,Kappa,W] = InitParameters(X,Kmax,'kappaMin',Regularize,'debg',debg, 'reps', reps, 'kappaType', kappaType);
+    [Mu,Kappa,W] = InitParameters(X,Kmax,'kappaMin',Regularize,'debg',debg);
 else
     W = start.W;
     Mu = start.MU;
@@ -38,6 +38,7 @@ npars = D*(D + 1)/2; % number of free parameters to estimate
 nparsover2 = npars / 2;
 K = Kmax;
 % Using the initial parameters, compute the log-likelihood
+[~,llh] = Expectation(X,W,Mu,Kappa,besselFunction); % E-step
 niter = 1;
 loglike(niter) =  -inf; % stores the log-likelihood
 dlength = -loglike(niter) + (nparsover2*sum(log(W))) + (nparsover2 + 0.5)*K*log(N); % description length
@@ -93,7 +94,7 @@ while(k_cont)  % the outer loop will take us down from Kmax to Kmin components
         end % this is the end of the innermost "while comp <= k" loop which cycles through the components
         % increment the iterations counter
         niter = niter + 1;
-        [~,llh] = Expectation(X,W,Mu,Kappa,besselFunction); %perform E-step
+        [R,llh] = Expectation(X,W,Mu,Kappa,besselFunction); %perform E-step
         loglike(niter) = llh;
         % compute and store the description length and the current number of components
         dlength = -loglike(niter) + (nparsover2*sum(log(W))) +  (nparsover2 + 0.5)*K*log(N);
