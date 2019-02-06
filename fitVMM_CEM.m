@@ -17,6 +17,7 @@ function obj =  fitVMM_CEM(X,Kmax,varargin)
 
 %%
 %#   $Author: Israel D. Gebru $    $Date: 2016/04/28 $    $Revision: 1.0 $
+%#   $Modified: skacprza@agh.edu.pl $Date: 2019/02/06 $
 %#   Copyright:
 [Kmin,start,tol,Regularize,debg,reps,kappaType] = process_options(varargin,'Kmin',1,'start',[],'tol',1e-12,'Regularize',1e-3,'debg',0,'reps',10,'kappaType', 1);
 [N,D]= size(X);
